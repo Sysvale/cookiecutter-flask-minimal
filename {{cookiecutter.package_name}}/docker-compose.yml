@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  prod:
+    labels:
+      - Author="{{ cookiecutter.full_name }}"
+    build:
+      context: .
+      dockerfile: docker/prod.Dockerfile
+    volumes:
+      - ./:/home
+    stdin_open: true
+
+  dev:
+    labels:
+      - Author="{{ cookiecutter.full_name }}"
+    build:
+      context: .
+      dockerfile: docker/dev.Dockerfile
+    volumes:
+      - ./:/home
+    stdin_open: true

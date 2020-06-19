@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  prod:
+    labels:
+      - Author="{{ cookiecutter.full_name }}"
+    build:
+      context: .
+      dockerfile: docker/prod.Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/app
+    stdin_open: true
+
+  dev:
+    labels:
+      - Author="{{ cookiecutter.full_name }}"
+    build:
+      context: .
+      dockerfile: docker/dev.Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/app
+    stdin_open: true

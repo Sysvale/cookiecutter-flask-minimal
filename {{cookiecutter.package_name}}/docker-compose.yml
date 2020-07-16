@@ -7,8 +7,10 @@ services:
     build:
       context: .
       dockerfile: docker/prod.Dockerfile
+    ports:
+      - "5000:5000"
     volumes:
-      - ./:/home
+      - ./:/app
     stdin_open: true
 
   dev:
@@ -17,6 +19,8 @@ services:
     build:
       context: .
       dockerfile: docker/dev.Dockerfile
+    ports:
+      - "5000:5000"
     volumes:
-      - ./:/home
+      - ./:/app
     stdin_open: true

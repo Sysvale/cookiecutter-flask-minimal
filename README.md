@@ -13,14 +13,13 @@ Install [cookiecutter](https://github.com/audreyr/cookiecutter):
 
 Create your application from this template:
 
-    cookiecutter https://github.com/candidtim/cookiecutter-flask-minimal.git
+    cookiecutter https://github.com/Sysvale/cookiecutter-flask-minimal.git
 
 All set! Run the application:
 
-    cd yourapplication
-    make run
+    docker-compose up [service_name]
 
-And then open it at [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+And then open it at [http://0.0.0.0:5000/](http://0.0.0.0:5000/)
 
 
 ## Features

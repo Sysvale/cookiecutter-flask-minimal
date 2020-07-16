@@ -1,4 +1,10 @@
 {
   "application_name": "Your Application",
-  "package_name": "yourapplication"
+  "package_name": "{{ cookiecutter.application_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "application_short_description": "Your package short description.",
+  "full_name": "Your Full Name",
+  "email": "{{ cookiecutter.full_name.lower().replace(' ', '').replace(\"'\", '') }}@example.com",
+  "gitlab_username": "{{ cookiecutter.full_name.lower().replace(' ', '').replace(\"'\", '') }}",
+  "version": "0.1.0",
+  "use_pytest": "y"
 }

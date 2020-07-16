@@ -1,0 +1,8 @@
+bump2version==0.5.11
+flake8==3.7.8
+tox==3.14.0
+coverage==4.5.4
+{% if cookiecutter.use_pytest == 'y' -%}
+pytest==4.6.5
+pytest-cov
+pytest-runner==5.1{% endif %}

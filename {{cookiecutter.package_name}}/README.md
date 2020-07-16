@@ -1,59 +1,67 @@
-# {{cookiecutter.application_name}}
+# {{ cookiecutter.application_name }}
 
-{{cookiecutter.application_name}} description
+{{ cookiecutter.application_short_description }}
 
-## Quick Start
+## Docker Quickstart
 
-Run the application:
+This app can be run completely using `Docker` and `docker-compose`. **Using Docker is recommended, as it guarantees the application is run using compatible versions of Python**. You can find out more at [Compose command-line reference](https://docs.docker.com/compose/reference/).
 
-    make run
+### Basics
 
-And open it in the browser at [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+To build and start a service running in background
+```bash
+docker-compose up -d service_name
+```
 
+To execute a command with a service container
+```bash
+docker-compose exec service_name [COMMAND]
+```
 
-## Prerequisites
+To stop a service
+```bash
+docker-compose stop service_name
+```
 
-This is built to be used with Python 3. Update `Makefile` to switch to Python 2 if needed.
+To stop and a service and remove its container
+```bash
+docker-compose down service_name
+```
 
-Some Flask dependencies are compiled during installation, so `gcc` and Python header files need to be present.
-For example, on Ubuntu:
+### Production
 
-    apt install build-essential python3-dev
+To run the production version of the project
 
+```bash
+docker-compose up -d prod
+```
 
-## Development environment and release process
+To run the {{ cookiecutter.package_name }} module of the project
 
- - create virtualenv with Flask and {{cookiecutter.application_name}} installed into it (latter is installed in
-   [develop mode](http://setuptools.readthedocs.io/en/latest/setuptools.html#development-mode) which allows
-   modifying source code directly without a need to re-install the app): `make venv`
+```bash
+docker-compose exec prod python -m {{ cookiecutter.package_name }}
+```
 
- - run development server in debug mode: `make run`; Flask will restart if source code is modified
+### Development
 
- - run tests: `make test` (see also: [Testing Flask Applications](http://flask.pocoo.org/docs/0.12/testing/))
+To run the project development environment
 
- - create source distribution: `make sdist` (will run tests first)
+```bash
+docker-compose up -d dev
+```
 
- - to remove virtualenv and built distributions: `make clean`
+To execute {{ cookiecutter.package_name }} development routines
 
- - to add more python dependencies: add to `install_requires` in `setup.py`
+```bash
+# [FOLDERS] = folder1 folder2 folder3 (optional to limit validation)
+docker-compose exec dev flake8 --max-complexity=10 [FOLDERS]
+docker-compose exec dev pytest --cov={{ cookiecutter.package_name }} [MODULES_FOLDER] [TESTS_FOLDER]
+docker-compose exec dev python -m {{ cookiecutter.package_name }}
+```
 
- - to modify configuration in development environment: edit file `settings.cfg`; this is a local configuration file
-   and it is *ignored* by Git - make sure to put a proper configuration file to a production environment when
-   deploying
+## Features
 
+* TODO
 
-## Deployment
-
-If you are interested in an out-of-the-box deployment automation, check out accompanying
-[`cookiecutter-flask-ansible`](https://github.com/candidtim/cookiecutter-flask-ansible).
-
-Or, check out [Deploying with Fabric](http://flask.pocoo.org/docs/0.12/patterns/fabric/#fabric-deployment) on one of the
-possible ways to automate the deployment.
-
-In either case, generally the idea is to build a package (`make sdist`), deliver it to a server (`scp ...`),
-install it (`pip install {{cookiecutter.package_name}}.tar.gz`), ensure that configuration file exists and
-`{{cookiecutter.package_name.upper()}}_SETTINGS` environment variable points to it, ensure that user has access to the
-working directory to create and write log files in it, and finally run a
-[WSGI container](http://flask.pocoo.org/docs/0.12/deploying/wsgi-standalone/) with the application.
-And, most likely, it will also run behind a
-[reverse proxy](http://flask.pocoo.org/docs/0.12/deploying/wsgi-standalone/#proxy-setups).
+## Credits
+* {{ cookiecutter.full_name }} <{{ cookiecutter.email }}>

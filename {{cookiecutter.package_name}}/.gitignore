@@ -6,3 +6,7 @@ settings.cfg
 *.log*
 storage/*/*
 !.gitkeep
+
+# DotEnv configuration
+env.py
+env_testing.py

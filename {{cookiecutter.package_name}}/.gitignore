@@ -4,3 +4,7 @@ venv/
 dist/
 settings.cfg
 *.log*
+
+# DotEnv configuration
+env.py
+env_testing.py
